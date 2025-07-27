@@ -230,29 +230,6 @@ export default function Portfolio() {
     return stars[level as keyof typeof stars] || 1
   }
 
-  const [windowSize, setWindowSize] = useState({ width: 0, height: 0 })
-   useEffect(() => {
-    const handleResize = () => {
-      setWindowSize({
-        width: window.innerWidth,
-        height: window.innerHeight,
-      })
-    }
-
-    const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY })
-    }
-
-    handleResize()
-    window.addEventListener('resize', handleResize)
-    window.addEventListener('mousemove', handleMouseMove)
-
-    return () => {
-      window.removeEventListener('resize', handleResize)
-      window.removeEventListener('mousemove', handleMouseMove)
-    }
-  }, [])
-
   return (
     <div className="min-h-screen bg-black text-white overflow-x-hidden relative">
       {/* Interactive Tech Background - Global */}
@@ -301,34 +278,7 @@ export default function Portfolio() {
           />
         ))}
 
-        Interactive Particles
-        {[...Array(30)].map((_, i) => {
-          const baseX = (i % 6) * (window.innerWidth / 6)
-          const baseY = Math.floor(i / 6) * (window.innerHeight / 5)
-          const distanceFromMouse = Math.sqrt(
-            Math.pow(mousePosition.x - baseX, 2) + Math.pow(mousePosition.y - baseY, 2),
-          )
-          const isNear = distanceFromMouse < 150
-
-          return (
-            <motion.div
-              key={`particle-${i}`}
-              className={`absolute w-2 h-2 rounded-full transition-all duration-300 ${
-                isNear ? "bg-cyan-400 shadow-md shadow-cyan-400/40" : "bg-gray-600"
-              }`}
-              style={{
-                left: baseX,
-                top: baseY,
-              }}
-              animate={{
-                x: isNear ? (mousePosition.x - baseX) * 0.1 : 0,
-                y: isNear ? (mousePosition.y - baseY) * 0.1 : 0,
-                scale: isNear ? 1.5 : 1,
-              }}
-              transition={{ type: "spring", stiffness: 150, damping: 15 }}
-            />
-          )
-        })}
+        
         
 
         {/* Floating Tech Elements */}

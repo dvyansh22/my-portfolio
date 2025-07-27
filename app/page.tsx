@@ -198,7 +198,7 @@ export default function Portfolio() {
     {
       role: "Co-Secretary",
       company: "Cybersecurity Club, VIT",
-      period: "2023 - Present",
+      period: "2025 - Present",
       description:
         "Led cybersecurity workshops, organized CTF competitions, and managed club operations with 200+ members.",
       tech: ["Leadership", "Event Management", "Cybersecurity"],
@@ -541,7 +541,7 @@ export default function Portfolio() {
               <div className="relative">
                 <div className="w-64 h-64 mx-auto rounded-full bg-gradient-to-r from-cyan-400 to-purple-500 p-1">
                   <img
-                    src="/placeholder.svg?height=256&width=256"
+                    src="/profilepic.jpg?height=256&width=256"
                     alt="Divyansh Krishna"
                     className="w-full h-full rounded-full object-cover"
                   />

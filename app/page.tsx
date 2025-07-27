@@ -230,6 +230,29 @@ export default function Portfolio() {
     return stars[level as keyof typeof stars] || 1
   }
 
+  const [windowSize, setWindowSize] = useState({ width: 0, height: 0 })
+   useEffect(() => {
+    const handleResize = () => {
+      setWindowSize({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      })
+    }
+
+    const handleMouseMove = (e: MouseEvent) => {
+      setMousePosition({ x: e.clientX, y: e.clientY })
+    }
+
+    handleResize()
+    window.addEventListener('resize', handleResize)
+    window.addEventListener('mousemove', handleMouseMove)
+
+    return () => {
+      window.removeEventListener('resize', handleResize)
+      window.removeEventListener('mousemove', handleMouseMove)
+    }
+  }, [])
+
   return (
     <div className="min-h-screen bg-black text-white overflow-x-hidden relative">
       {/* Interactive Tech Background - Global */}
@@ -278,7 +301,7 @@ export default function Portfolio() {
           />
         ))}
 
-        {/* Interactive Particles */}
+        Interactive Particles
         {[...Array(30)].map((_, i) => {
           const baseX = (i % 6) * (window.innerWidth / 6)
           const baseY = Math.floor(i / 6) * (window.innerHeight / 5)
@@ -306,6 +329,7 @@ export default function Portfolio() {
             />
           )
         })}
+        
 
         {/* Floating Tech Elements */}
         {[...Array(15)].map((_, i) => (
